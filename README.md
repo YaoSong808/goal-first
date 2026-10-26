@@ -65,7 +65,7 @@ The skill is at the repository root; install it with the name goal-first.
 
 The installer should use the skills location configured for your environment. If a copy already exists, update that copy deliberately instead of installing a duplicate.
 
-If the archive download is interrupted, ask the installer to use Git (`--method git`), or use the manual clone below. The Git installation path has been checked against this repository.
+If the installer download fails, use the full manual clone below. Some installer versions omit subdirectories when their Git fallback selects a repository-root skill. A complete installation includes `agents/openai.yaml` and `references/behavior-cases.md`, not just `SKILL.md`.
 
 ### Manually
 
