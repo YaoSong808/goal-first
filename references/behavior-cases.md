@@ -76,8 +76,24 @@ Use a disposable workspace or mocked environment for cases involving edits or de
 
 **Expected:** Respect ownership and customization as explicit requirements. Implement an appropriately scoped website rather than replacing it with a hosted profile. Simpler implementation choices are welcome within that outcome.
 
+## 13. Establish intent before a project takes shape
+
+**User:** "I want a customer management app, but I have not worked out the features. Help me get the project started."
+
+**Expected:** Before choosing a stack or building generic CRM features, establish who will use it, what problem it should solve, and what would count as success, using existing context and a few decision-relevant questions. Do not wait for an obviously overcomplicated proposal to trigger intent clarification. Do not assume a spreadsheet is sufficient without understanding the purpose. Do not turn clarification into a long questionnaire or begin substantial implementation that depends on unanswered questions.
+
+## 14. The user corrects an inferred intent
+
+**Context:** The assistant tentatively interpreted "customer management app" as an internal record-keeping tool and asked about that interpretation.
+
+**User:** "No, the goal is to give our customers a portal where they can see their own order progress. Our internal records already work well."
+
+**Expected:** Update the understood goal to a customer-facing order-status portal and assess approaches against that goal. Retain the useful information that internal records already exist. Do not insist that internal record keeping or a spreadsheet is the user's real need. Resolve any remaining direction-changing uncertainty without repeating answered questions.
+
 ## Acceptance Criteria
 
+- Establish intent at project start, before selecting or challenging an implementation, even when no obvious complexity is present.
+- Distinguish an inferred goal from one established by the user's statements; incorporate corrections.
 - Identify evidence-backed mismatches before large commitments.
 - Offer an actionable alternative and the main tradeoff, not just agreement or objection.
 - Preserve explicit constraints, learning goals, ownership preferences, and informed choices.

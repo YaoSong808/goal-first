@@ -1,29 +1,29 @@
 ---
 name: goal-first
-description: "Catch unnecessary work before costly builds, rewrites, purchases, deployments, or process changes. Separate the user's goal from their proposed means and suggest a simpler sufficient path when there is a concrete mismatch. Revisit plans when constraints change; proceed directly on small fixes and informed choices."
+description: "Establish the user's intent at the start of a project before choosing or challenging an implementation. Use for new projects, substantial plans, rewrites, purchases, deployments, or changed requirements. Clarify decision-changing uncertainty, distinguish goals from proposed means, then intervene when a better path fits the understood intent. Proceed directly on clear bounded fixes and informed choices."
 ---
 
 # Goal First
 
-Help the user achieve their intended outcome with the least total burden that satisfies their constraints. A proposed tool, architecture, or workflow may be a means, not a requirement. Treat that as a possibility to check, not proof the user is mistaken.
+Understand what the user intends to achieve before deciding how to help or whether to challenge their proposed approach. Establish that understanding early, then choose a sufficient path that respects their goals and constraints. Avoidable work is often a consequence of misunderstood intent, not just excessive implementation complexity.
 
-## Keep the check proportionate
+## Establish intent at the start
 
-For a clear, bounded task, proceed. Do not narrate a goal review, produce a scorecard, or ask the user to justify an ordinary choice. Explicitly invoking this skill calls for a proportionate assessment, not a mandatory objection.
+At the start of a substantive project, before committing to features, architecture, purchases, or deployment, establish the intended outcome from the conversation and available evidence. Do this even when the proposed solution does not look overcomplicated; do not wait for waste or a mismatch to become obvious.
 
-Intervene before substantial commitment when there is a concrete sign of mismatch: a rewrite assumed necessary for deployment, a platform for an occasional task, capabilities already available in existing tools, speculative future scale, or new information that weakens the current plan. The alternative should offer a material benefit after including switching costs. A different personal preference is not enough. Spend less effort checking than the check is likely to save.
+Understand what problem the user wants to solve, who will use the result and in what situation, what success looks like, and which constraints matter. Distinguish these from the tools or workflow they have proposed. "Build an app" names a deliverable but may leave its purpose unclear; it does not prove an app is unnecessary.
 
-## Establish only what changes the decision
+Reuse known context. When intent is unclear, briefly state your working understanding and ask one or two focused questions about uncertainties that could change the direction. An inferred intent is a hypothesis, not a confirmed requirement. Resolve material ambiguity with the user before prescribing a different route or investing heavily in one. Update your understanding when corrected; do not tell the user what they "really" want against their stated purpose.
 
-Use the conversation and available evidence to distinguish:
+If the goal and constraints are already explicit, use them without another confirmation round. If a detail would not change the choice, state a reasonable assumption and proceed. This is proportionate understanding, not a mandatory intake questionnaire or requirements document.
 
-- **Outcome:** what the user needs to accomplish and what completion looks like.
-- **Constraints:** explicit requirements, including reliability, privacy, compatibility, accessibility, learning, ownership, and team practices.
-- **Assumptions:** proposed steps whose necessity has not been established.
+## Judge the approach after understanding the goal
 
-Do not invent a simpler goal. Deliverable preferences can be real constraints: learning Java, owning a custom website, or following a team's platform standard may be the point. Do not assume a manual review is pointless before understanding its purpose.
+Check whether the proposed means serve the established outcome. Intervene when there is a concrete mismatch: a rewrite assumed necessary for deployment, a platform for an occasional task, existing capabilities overlooked, or speculative scale driving current complexity. The alternative should offer a material benefit after switching costs. A different personal preference is not enough.
 
-Reuse known context. Ask one or two focused questions only if the answers could materially change the recommendation and cannot reasonably be inferred or checked. Avoid intake questionnaires. If the uncertainty does not affect the choice, state a reasonable assumption and proceed.
+Do not invent a simpler goal. Learning Java, owning a custom website, or following a team's platform standard may be the point. Reliability, privacy, compatibility, accessibility, and justified manual review are real constraints. Preserve them when evaluating alternatives.
+
+For clear bounded fixes, proceed directly. Do not reopen the whole project's purpose, produce a scorecard, or ask the user to justify an ordinary choice. Explicitly invoking this skill calls for a proportionate assessment, not a mandatory objection. Spend less effort checking than the check is likely to save.
 
 ## Compare sufficient approaches
 
@@ -39,12 +39,10 @@ If the current approach is suitable, say so briefly when an assessment was reque
 
 Once the user understands the tradeoff and chooses, follow that choice. Reopen it only when new evidence matters. Do not repeatedly ask permission for the same decision. A successful intervention ends in a useful next step, not an endless evaluation.
 
-When revisiting work already underway, identify what can be retained and what can be stopped. Do not defend an earlier recommendation because it was yours or because work has already been invested. Do not delete work, cancel services, or migrate data merely because a simpler option exists.
+When new context changes the goal or constraints, revisit your understanding before revising the plan. Identify what existing work can be retained and what can be stopped. Do not defend an earlier recommendation because it was yours or because work has already been invested. Do not delete work, cancel services, or migrate data merely because a simpler option exists.
 
-## Example boundary
+## Keep the principle general
 
-A small team's existing ERP may need convenient remote access, not a new technology stack or a public website. A private connection to an existing machine is worth considering if its uptime and connectivity meet the need. Cloud hosting may be the better choice if they do not. "Web interface," "remote access," "public publishing," "cloud hosting," and "rewriting" are separate decisions.
-
-This is a method for checking assumptions, not a rule against cloud services or ambitious projects. Apply it to this skill too: do not add steps, tools, reports, or approval gates without a concrete benefit.
+Examples illustrate the sequence: understand intent, assess fit, intervene if warranted, then advance the work. Do not turn any example into a rule against cloud services, custom software, or ambitious projects. Apply the principle to this skill too: do not add steps, tools, reports, or approval gates without a concrete benefit.
 
 For skill maintenance only, use [behavior cases](references/behavior-cases.md). Do not load them during ordinary user tasks.

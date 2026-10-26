@@ -1,27 +1,31 @@
 # Goal First
 
-**Reach the goal without unnecessary work.**
+**Understand intent at the start, assess the approach, then intervene when warranted.**
 
 [中文介绍](README.zh-CN.md) | [Skill instructions](SKILL.md) | [Behavior cases](references/behavior-cases.md)
 
-Goal First is a small, instruction-only skill for Codex. It helps an assistant notice when a requested implementation adds avoidable work, suggest a simpler sufficient approach, and then get on with the task.
+Goal First is a small, instruction-only skill for Codex. It asks the assistant to establish the user's intent early in a project: the problem to solve, who will use the result, what success means, and which constraints matter. With that shared understanding, it can assess the proposed approach and suggest a more direct path when appropriate.
 
-The point is not to challenge every request. It is to distinguish **what the user needs** from **the method they currently know** before a costly commitment.
+The core sequence is **understand intent, assess fit, intervene if warranted, then advance the work**.
 
 ## Why This Exists
 
-A working application used by one or two people needs to be accessible while traveling. A seemingly natural plan follows: rewrite the frontend and backend, buy a server, publish a website, then maintain the deployment.
+At the start of a project, users often express a need as a proposed solution: "build a website," "develop an app," or "automate this workflow." These requests identify an approach, but may leave the purpose, usage context, and success criteria unstated.
 
-But the actual need may be convenient access to the existing application. If an existing computer and a private connection meet the reliability requirements, a rewrite and public deployment may add little value. If they cannot meet those requirements, cloud hosting may be exactly the right choice.
+An assistant that immediately chooses a stack, lists features, and writes code can efficiently complete a solution that misses the user's intent. Important context may emerge only after unnecessary work has accumulated. Jumping straight to a "simpler alternative" without understanding the user can miss the goal just as badly.
 
-The missed opportunity is not "using the cloud." It is failing to check whether each step helps achieve the actual goal.
+This skill therefore starts with **understanding and aligning on intent early in the project**. The assistant uses existing context first. Where uncertainty could change the direction, it briefly states its working understanding and checks it with the user. Its inference is not a requirement the user has already confirmed.
 
-Goal First makes that check part of the assistant's judgment without turning it into another mandatory process.
+Only then can it judge whether intervention is useful. If the proposed approach fits, proceed. If it introduces an avoidable detour, explain the mismatch, alternative, and tradeoff. Establish intent even when the proposal looks straightforward, rather than waiting for visible waste before asking what the user needs.
+
+When the context already establishes intent, no extra confirmation round is needed. A bounded fix does not reopen the whole project. The aim is early alignment, not another approval process.
 
 ## What It Changes
 
 | Situation | Expected behavior |
 | --- | --- |
+| A project starts with a solution name but an unclear purpose | Understand intent and resolve direction-changing uncertainty before selecting an approach. |
+| The user corrects the assistant's interpretation | Update the understanding and recommendation instead of defending an inferred "real need." |
 | A rewrite is assumed necessary for deployment | Separate the two decisions before starting the rewrite. |
 | A large platform is proposed for an occasional task | Consider an existing tool or a small script, with the relevant tradeoff. |
 | Important context changes midway through a project | Revisit the plan and preserve useful work. |
@@ -33,15 +37,20 @@ The skill compares **total burden**: setup, everyday use, maintenance, money, re
 
 ## A Useful Intervention
 
-An intervention should identify a specific mismatch, offer a workable alternative, explain the main tradeoff, and lead to progress. Usually a few sentences are enough:
+Suppose the user says, "Build a website so I can handle business away from home." First establish the purpose and available resources, before choosing technologies or discouraging a website:
 
-> You need convenient access to the existing ERP while traveling. Rewriting its frontend and backend is not a prerequisite for that. Since only two people use it and an existing computer can stay on, we can first check whether private access meets the need. That depends on the computer and home connection staying available; cloud hosting becomes more attractive if those are unreliable.
+> I understand that you want to handle business while away. Is this primarily for you, or also for employees or customers? Do you already have an application that handles that work?
 
-This is an illustration, not a script to repeat on every task. The assistant should verify facts that would change the decision, not claim an untested option already works.
+If the user then explains that only one or two people use an existing ERP and a home computer can stay on, there is a basis for a recommendation:
+
+> Since the goal is remote access to the existing ERP, rewriting its frontend and backend is not a prerequisite. We can check whether private access meets the need. That depends on the computer and home connection staying available; cloud hosting is worth considering if they cannot.
+
+Travel is one illustration. The same reasoning applies to new products, analysis, learning projects, purchases, and process design. Verify decision-critical conditions rather than presenting a plausible option as already tested.
 
 ## What It Does Not Do
 
 - Treat "simpler" as permission to remove required capabilities or change the requested deliverable.
+- Declare "what you really need" and redirect the project before understanding the user's intent.
 - Turn every request into an interview, comparison table, scorecard, or approval gate.
 - Assume the user is wrong because they are unfamiliar with implementation details.
 - Reject cloud hosting, custom software, or ambitious projects as a category.
@@ -85,9 +94,10 @@ For a manually cloned copy, update from its directory with `git pull --ff-only` 
 Explicitly invoke the skill with a request such as:
 
 ```text
-Use $goal-first to check this plan before we build it.
-I need to compare two spreadsheets once a month, but I was planning
-to build a warehouse, scheduler, and dashboard. What is sufficient?
+Use $goal-first. I want a customer management tool, but the requirements
+are still unclear. Use the available context to understand my goal,
+clarify what could change the direction, and then assess suitable approaches.
+Do not start by choosing a technology stack.
 ```
 
 Or:
@@ -119,7 +129,7 @@ The README files and behavior cases are not required reading during ordinary tas
 
 ## Validation and Contributions
 
-The [12 behavior cases](references/behavior-cases.md) cover both useful interventions and cases where the assistant should simply proceed. They are acceptance criteria, not a claim of a measured success rate or completed independent model evaluation.
+The [14 behavior cases](references/behavior-cases.md) cover early intent clarification, user corrections, useful interventions, and cases where the assistant should simply proceed. They are acceptance criteria, not a claim of a measured success rate or completed independent model evaluation.
 
 To assess a change, give a model the skill and a realistic prompt without showing it the expected answer. Compare its actual decisions and actions with the criteria. Include routine fixes and informed choices: avoiding unnecessary interruptions matters as much as catching overcomplicated plans.
 
