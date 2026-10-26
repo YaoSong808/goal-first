@@ -1,0 +1,6 @@
+interface:
+  display_name: "Goal First · 目标优先"
+  short_description: "Catch unnecessary work without slowing useful work down"
+  default_prompt: "使用 $goal-first 检查我提出的方案是否必要，结合已有条件提出更省事的实现方式，并说明取舍。"
+policy:
+  allow_implicit_invocation: true
